@@ -1,0 +1,42 @@
+// -------------------------------
+//  Prisma Configuration
+// -------------------------------
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+// -------------------------------
+//  Batch Model
+// -------------------------------
+model Batch {
+  id         Int       @id @default(autoincrement())
+  qrCode     String    @unique
+  product    String
+  totalQty   Float
+  createdAt  DateTime  @default(now())
+  batchHash  String
+
+  events     Event[]
+}
+
+// -------------------------------
+//  Event Model
+// -------------------------------
+model Event {
+  id                Int      @id @default(autoincrement())
+  batchId           Int
+  type              String
+  details           String
+  quantity          Float?
+  createdAt         DateTime @default(now())
+
+  eventHash         String
+  previousEventHash String?
+
+  batch Batch @relation(fields: [batchId], references: [id])
+}

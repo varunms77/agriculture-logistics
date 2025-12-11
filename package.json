@@ -1,0 +1,26 @@
+{
+  "name": "agri-backend",
+  "version": "1.0.0",
+  "description": "Agri-Logistics backend (Node + Express + Prisma + MySQL + Pinata + QR)",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate dev --name init"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.22.0",
+    "axios": "^1.13.2",
+    "dotenv": "^16.6.1",
+    "express": "^4.22.1",
+    "form-data": "^4.0.5",
+    "multer": "^1.4.5-lts.1",
+    "mysql2": "^3.15.3",
+    "qrcode": "^1.5.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22",
+    "prisma": "^5.22.0"
+  }
+}
